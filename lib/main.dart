@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rest_api_flutter_demo/repository/repository.dart';
+import 'package:rest_api_flutter_demo/source/view/data_list_view.dart';
+
+import 'source/cubit/list_view_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,40 +14,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Rest API Call',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Listing Screen'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              'Some Text',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return RepositoryProvider(
+      create: (context) => DataRepository(),
+      child: MaterialApp(
+        title: 'Rest API Call',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: BlocProvider(
+          create: (context) => ListViewCubit()..getDrinkResponseFromRepo(),
+          child: const DataListView(),
         ),
       ),
     );

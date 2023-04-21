@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^5.1.1
   json_annotation: ^4.8.0
+  flutter_bloc: ^8.1.2
+  built_value: ^8.4.4
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +52,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   json_serializable: ^6.6.1
+  build_runner: ^2.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
