@@ -19,7 +19,7 @@ Map<String, dynamic> _$DrinkResponseToJson(DrinkResponse instance) =>
     };
 
 Drink _$DrinkFromJson(Map<String, dynamic> json) => Drink(
-      isDrink: json['idDrink'] as String?,
+      isDrink: json['isDrink'] as String?,
       strDrink: json['strDrink'] as String?,
       strDrinkAlternate: json['strDrinkAlternate'] as String?,
       strTags: json['strTags'] as String?,
@@ -71,10 +71,11 @@ Drink _$DrinkFromJson(Map<String, dynamic> json) => Drink(
       strCreativeCommonsConfirmed:
           json['strCreativeCommonsConfirmed'] as String?,
       dateModified: json['dateModified'] as String?,
+      isFavourite: json['isFavourite'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$DrinkToJson(Drink instance) => <String, dynamic>{
-      'idDrink': instance.isDrink,
+      'isDrink': instance.isDrink,
       'strDrink': instance.strDrink,
       'strDrinkAlternate': instance.strDrinkAlternate,
       'strTags': instance.strTags,
@@ -125,4 +126,5 @@ Map<String, dynamic> _$DrinkToJson(Drink instance) => <String, dynamic>{
       'strImageAttribution': instance.strImageAttribution,
       'strCreativeCommonsConfirmed': instance.strCreativeCommonsConfirmed,
       'dateModified': instance.dateModified,
+      'isFavourite': instance.isFavourite,
     };

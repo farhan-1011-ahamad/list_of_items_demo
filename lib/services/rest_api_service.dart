@@ -24,12 +24,3 @@ class RestAPIService {
     }
   }
 }
-
-class ResponseData {
-  dynamic data;
-  int? statusCode;
-  ResponseData({
-    this.data,
-    this.statusCode,
-  });
-}

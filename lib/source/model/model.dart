@@ -70,7 +70,9 @@ class Drink {
       this.strImageSource,
       this.strImageAttribution,
       this.strCreativeCommonsConfirmed,
-      this.dateModified});
+      this.dateModified,
+      this.isFavourite = false,
+      });
 
   String? isDrink;
   String? strDrink;
@@ -125,6 +127,7 @@ class Drink {
   String? strImageAttribution;
   String? strCreativeCommonsConfirmed;
   String? dateModified;
+  bool isFavourite;
 
   factory Drink.fromJson(Map<String, dynamic> json) => _$DrinkFromJson(json);
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rest_api_flutter_demo/source/cubit/list_view_cubit.dart';
-import 'package:rest_api_flutter_demo/source/view/data_detail_view.dart';
+import 'package:rest_api_flutter_demo/source/view/drink_data_list_item.dart';
 
 class DataListView extends StatelessWidget {
   const DataListView({super.key});
@@ -101,38 +101,10 @@ class DataListView extends StatelessWidget {
                         shrinkWrap: true,
                         itemCount: state.drinkList?.length,
                         itemBuilder: (context, index) {
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: ((context) {
-                                return DataDetailView(
-                                  drink: state.drinkList![index],
-                                );
-                              })));
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.all(10.0),
-                              height: 40,
-                              decoration: BoxDecoration(
-                                color: Colors.amber,
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(5),
-                                ),
-                                border: Border.all(
-                                  color: Colors.black,
-                                  width: 0.5,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Drink: ${state.drinkList?[index].strDrink ?? ""}",
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                            ),
+                          return DrinkListItem(
+                            listViewCubit: listViewCubit,
+                            drink: state.drinkList![index],
+                            index: index,
                           );
                         },
                       ),
