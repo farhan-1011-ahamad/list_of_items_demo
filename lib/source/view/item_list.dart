@@ -1,23 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rest_api_flutter_demo/source/cubit/list_view_cubit.dart';
-import 'package:rest_api_flutter_demo/source/view/drink_data_list_item.dart';
+import 'package:list_of_items_demo/source/cubit/item_cubit.dart';
+import 'package:list_of_items_demo/source/view/favourites_list.dart';
+import 'package:list_of_items_demo/source/view/item_screen.dart';
 
-class DataListView extends StatelessWidget {
-  const DataListView({super.key});
+class ItemListScreen extends StatelessWidget {
+  const ItemListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var listViewCubit = context.read<ListViewCubit>();
+    var listCubit = context.read<ItemCubit>();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber[600],
+        backgroundColor: Colors.blue[700],
         title: const Text(
-          "Data List View",
+          "All Items",
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
+        centerTitle: true,
+        actions: [
+          BlocBuilder<ItemCubit, ItemState>(
+            builder: (context, state) {
+              return Padding(
+              padding: const EdgeInsets.only(right:5.0,),
+
+                child: SizedBox(
+                  height: 100,
+                  width: 100,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: ((context) {
+                        return BlocProvider(
+                          create: (context) =>
+                              ItemCubit()..getItemsData(true),
+                          child: const FavouriteList(),
+                        );
+                      })));
+                    },
+                    icon: Stack(
+                      children: [
+                        const SizedBox(
+                    height: 100,
+                    width: 50,
+                    ),
+                        const Icon(Icons.favorite,size: 40,color: Colors.redAccent,),
+                   Positioned(
+                    right: 2,
+                     child: CircleAvatar(
+                      radius: 10,
+                      backgroundColor: Colors.white,
+                      child: Text("${state.favList?.length ?? 0}", style: const TextStyle(color: Colors.black,fontWeight: FontWeight.w700,fontSize: 16),
+                       textAlign: TextAlign.end,)),
+                   ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          )
+        ],
       ),
       body: GestureDetector(
         onTap: () {
@@ -34,41 +79,42 @@ class DataListView extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.amber,
+                    color: Colors.white70,
                     borderRadius: const BorderRadius.all(
                       Radius.circular(5),
                     ),
-                    border: Border.all(color: Colors.black),
+                    border: Border.all(color: Colors.black,width: 2),
                   ),
                   child: ListTile(
                     trailing: IconButton(
                       onPressed: () {
                         FocusScope.of(context).unfocus();
-                        listViewCubit.getDrinkResponseFromRepo();
+                        listCubit.getItemsData();
                       },
                       icon: const Icon(
                         Icons.search,
-                        color: Colors.white,
+                        color: Colors.grey,
                         size: 28,
                       ),
                     ),
                     title: TextField(
                       onSubmitted: (value) {
                         FocusScope.of(context).unfocus();
-                        listViewCubit.getDrinkResponseFromRepo();
+                        listCubit.getItemsData();
                       },
-                      onChanged: listViewCubit.searchTermChange,
+                      onChanged: listCubit.searchTextChange,
                       decoration: const InputDecoration(
+                    
                         hintText: 'Search...',
                         hintStyle: TextStyle(
-                          color: Colors.white,
+                          color: Colors.grey,
                           fontSize: 18,
-                          fontStyle: FontStyle.italic,
+                          
                         ),
                         border: InputBorder.none,
                       ),
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -77,7 +123,7 @@ class DataListView extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              BlocConsumer<ListViewCubit, ListViewState>(
+              BlocConsumer<ItemCubit, ItemState>(
                 listener: (context, state) {
                   if (state.status == Status.error) {
                     var snackBar = SnackBar(
@@ -99,19 +145,23 @@ class DataListView extends StatelessWidget {
                     return Expanded(
                       child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: state.drinkList?.length,
+                        itemCount: state.itemList?.length,
                         itemBuilder: (context, index) {
-                          return DrinkListItem(
-                            listViewCubit: listViewCubit,
-                            drink: state.drinkList![index],
+                          return state.itemList?[index] != null ? ItemsList(
+                            listCubit: listCubit,
+                            item: state.itemList![index],
                             index: index,
-                          );
+                            isFavouriteList: false,
+                          ):const SizedBox.shrink();
                         },
                       ),
                     );
                   } else {
-                    return const CircularProgressIndicator(
-                      color: Colors.amber,
+                   
+                    return  Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.blue[700],
+                      ),
                     );
                   }
                 },

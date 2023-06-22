@@ -1,29 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'drink_model.dart';
+part of 'item_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class DrinkModelAdapter extends TypeAdapter<DrinkModel> {
+class ItemModelAdapter extends TypeAdapter<ItemModel> {
   @override
   final int typeId = 0;
 
   @override
-  DrinkModel read(BinaryReader reader) {
+  ItemModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return DrinkModel(
+    return ItemModel(
       name: fields[0] as String,
       isFavourite: fields[1] as bool,
     );
   }
 
   @override
-  void write(BinaryWriter writer, DrinkModel obj) {
+  void write(BinaryWriter writer, ItemModel obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -38,7 +38,7 @@ class DrinkModelAdapter extends TypeAdapter<DrinkModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is DrinkModelAdapter &&
+      other is ItemModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

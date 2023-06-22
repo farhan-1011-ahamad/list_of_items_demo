@@ -1,6 +1,6 @@
 {
-    "name": "rest_api_flutter_demo",
-    "short_name": "rest_api_flutter_demo",
+    "name": "list_of_items_demo",
+    "short_name": "list_of_items_demo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

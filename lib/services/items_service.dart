@@ -19,7 +19,8 @@ class RestAPIService {
       log(response.statusCode.toString(), name: "Status Code");
       log(response.data.toString(), name: "Response Data");
       }
-    } catch (e) {
+    }
+     catch (e) {
       log(e.toString(), name: "Error in Network Service");
     }
   }

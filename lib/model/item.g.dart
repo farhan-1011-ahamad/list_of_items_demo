@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'model.dart';
+part of 'item.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-DrinkResponse _$DrinkResponseFromJson(Map<String, dynamic> json) =>
-    DrinkResponse(
+ItemResponse _$DrinkResponseFromJson(Map<String, dynamic> json) =>
+    ItemResponse(
       drinkList: (json['drinks'] as List<dynamic>?)
-          ?.map((e) => Drink.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$DrinkResponseToJson(DrinkResponse instance) =>
+Map<String, dynamic> _$DrinkResponseToJson(ItemResponse instance) =>
     <String, dynamic>{
       'drinks': instance.drinkList,
     };
 
-Drink _$DrinkFromJson(Map<String, dynamic> json) => Drink(
+Item _$DrinkFromJson(Map<String, dynamic> json) => Item(
       isDrink: json['isDrink'] as String?,
-      strDrink: json['strDrink'] as String?,
+      strItem: json['strDrink'] as String?,
       strDrinkAlternate: json['strDrinkAlternate'] as String?,
       strTags: json['strTags'] as String?,
       strVideo: json['strVideo'] as String?,
@@ -35,7 +35,7 @@ Drink _$DrinkFromJson(Map<String, dynamic> json) => Drink(
       strInstructionsIT: json['strInstructionsIT'] as String?,
       strInstructionsZHHANS: json['strInstructionsZH-HANS'] as String?,
       strInstructionsZHHANT: json['strInstructionsZH-HANT'] as String?,
-      strDrinkThumb: json['strDrinkThumb'] as String?,
+      strItemThumb: json['strDrinkThumb'] as String?,
       strIngredient1: json['strIngredient1'] as String?,
       strIngredient2: json['strIngredient2'] as String?,
       strIngredient3: json['strIngredient3'] as String?,
@@ -74,9 +74,9 @@ Drink _$DrinkFromJson(Map<String, dynamic> json) => Drink(
       isFavourite: json['isFavourite'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$DrinkToJson(Drink instance) => <String, dynamic>{
+Map<String, dynamic> _$DrinkToJson(Item instance) => <String, dynamic>{
       'isDrink': instance.isDrink,
-      'strDrink': instance.strDrink,
+      'strDrink': instance.strItem,
       'strDrinkAlternate': instance.strDrinkAlternate,
       'strTags': instance.strTags,
       'strVideo': instance.strVideo,
@@ -91,7 +91,7 @@ Map<String, dynamic> _$DrinkToJson(Drink instance) => <String, dynamic>{
       'strInstructionsIT': instance.strInstructionsIT,
       'strInstructionsZH-HANS': instance.strInstructionsZHHANS,
       'strInstructionsZH-HANT': instance.strInstructionsZHHANT,
-      'strDrinkThumb': instance.strDrinkThumb,
+      'strDrinkThumb': instance.strItemThumb,
       'strIngredient1': instance.strIngredient1,
       'strIngredient2': instance.strIngredient2,
       'strIngredient3': instance.strIngredient3,

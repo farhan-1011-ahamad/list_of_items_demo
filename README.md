@@ -1,4 +1,4 @@
-# rest_api_flutter_demo
+# list_of_items_demo
 
 A new Flutter project.
 

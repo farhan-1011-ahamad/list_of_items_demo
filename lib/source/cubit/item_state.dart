@@ -1,36 +1,36 @@
-part of 'list_view_cubit.dart';
+part of 'item_cubit.dart';
 
-class ListViewState {
-  final List<Drink>? drinkList;
-  final List<Drink?>? favList;
+class ItemState {
+  final List<Item>? itemList;
+  final List<Item?>? favList;
   final Status? status;
   final String? errorMessage;
-  final String? searchTerm;
+  final String? searchText;
   final bool isFavourite;
 
-  ListViewState({
-    this.drinkList,
+  ItemState({
+    this.itemList,
     this.status,
     this.errorMessage,
-    this.searchTerm,
+    this.searchText,
     this.favList,
     this.isFavourite = false,
   });
 
-  ListViewState copyWith({
-    List<Drink>? drinkList,
-    List<Drink?>? favList,
+  ItemState copyWith({
+    List<Item>? itemList,
+    List<Item?>? favList,
     Status? status,
     String? errorMessage,
-    String? searchTerm,
+    String? searchText,
     bool? isFavourite,
   }) {
-    return ListViewState(
-      drinkList: drinkList ?? this.drinkList,
+    return ItemState(
+      itemList: itemList ?? this.itemList,
       favList: favList ?? this.favList,
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
-      searchTerm: searchTerm ?? this.searchTerm,
+      searchText: searchText ?? this.searchText,
       isFavourite: isFavourite ?? this.isFavourite,
     );
   }

@@ -1,27 +1,27 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'model.g.dart';
+part 'item.g.dart';
 
 @JsonSerializable()
-class DrinkResponse {
-  DrinkResponse({
+class ItemResponse {
+  ItemResponse({
     this.drinkList,
   });
 
   @JsonKey(name: 'drinks')
-  List<Drink>? drinkList;
+  List<Item>? drinkList;
 
-  factory DrinkResponse.fromJson(Map<String, dynamic> json) =>
+  factory ItemResponse.fromJson(Map<String, dynamic> json) =>
       _$DrinkResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$DrinkResponseToJson(this);
 }
 
 @JsonSerializable()
-class Drink {
-  Drink(
+class Item {
+  Item(
       {this.isDrink,
-      this.strDrink,
+      this.strItem,
       this.strDrinkAlternate,
       this.strTags,
       this.strVideo,
@@ -36,7 +36,7 @@ class Drink {
       this.strInstructionsIT,
       this.strInstructionsZHHANS,
       this.strInstructionsZHHANT,
-      this.strDrinkThumb,
+      this.strItemThumb,
       this.strIngredient1,
       this.strIngredient2,
       this.strIngredient3,
@@ -75,7 +75,7 @@ class Drink {
       });
 
   String? isDrink;
-  String? strDrink;
+  String? strItem;
   String? strDrinkAlternate;
   String? strTags;
   String? strVideo;
@@ -92,7 +92,7 @@ class Drink {
   String? strInstructionsZHHANS;
   @JsonKey(name: 'strInstructionsZH-HANT')
   String? strInstructionsZHHANT;
-  String? strDrinkThumb;
+  String? strItemThumb;
   String? strIngredient1;
   String? strIngredient2;
   String? strIngredient3;
@@ -129,7 +129,7 @@ class Drink {
   String? dateModified;
   bool isFavourite;
 
-  factory Drink.fromJson(Map<String, dynamic> json) => _$DrinkFromJson(json);
+  factory Item.fromJson(Map<String, dynamic> json) => _$DrinkFromJson(json);
 
   Map<String, dynamic> toJson() => _$DrinkToJson(this);
 }

@@ -1,4 +1,4 @@
-package com.example.rest_api_flutter_demo
+package com.example.list_of_items_demo
 
 import io.flutter.embedding.android.FlutterActivity
 
